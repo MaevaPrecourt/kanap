@@ -1,3 +1,6 @@
+//Définition du titre de l'onglet "Cart".
+document.title = "Kanap Panier";
+
 //Récupération du panier depuis le localStorage.
 function localStorageData(){
 

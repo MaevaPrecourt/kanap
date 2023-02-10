@@ -41,6 +41,7 @@ fetch(apiCouch)
   let nameElement = document.getElementById("title");
   nameElement.innerText = couch.name;
   let couchName = couch.name;
+  document.title = couch.name;
 
   //priceElement = Product Price
   let priceElement = document.getElementById("price");

@@ -17,7 +17,7 @@ function localStorageData(){
             //Il faut d'abord paramétrer "cardElement", pour les besoins de la prochaine étape.
             let cardElement = document.createElement("article");
             cardElement.className = "cart__item";
-            cardElement.dataset.id = couch.couchId;
+            cardElement.dataset.id = couch.productId;
             cardElement.dataset.color = couch.productColor;
 
             //"sectionElement" a "cardElement" pour enfant.
@@ -93,11 +93,11 @@ function localStorageData(){
             divCartItemContentSettingsDelete.className = "cart__item__content__settings__delete";
             divCartItemContentSettings.appendChild(divCartItemContentSettingsDelete);
 
-            //deletionElement = Product Deletion
-            let deletionElement = document.createElement("p");
-            deletionElement.className = "deletionElement";
-            deletionElement.innerText = "Supprimer";
-            divCartItemContentSettingsDelete.appendChild(deletionElement);
+            //deleteItem = Product Deletion
+            let deleteItem = document.createElement("p");
+            deleteItem.className = "deleteItem";
+            deleteItem.innerText = "Supprimer";
+            divCartItemContentSettingsDelete.appendChild(deleteItem);
 
             //totalQuantity = totalProducts()
             let totalQuantity = totalProducts();
@@ -178,7 +178,7 @@ function modifyFromCart(){
     for(let i = 0; i < itemQuantity.length; i++){
     
         //Clic sur les flèches, dans l'input de quantité.
-        itemQuantity[i].addEventListener("click", function(event){
+        itemQuantity[i].addEventListener("change", function(event){
 
             //Désactivation du comportement par défaut du navigateur (modification de l'URL de l'onglet, et chargement d'une nouvelle page).
             event.preventDefault();
@@ -193,7 +193,7 @@ function modifyFromCart(){
                 let cartFind = cart.find(
 
                     //Paramétrage de ladite recherche.
-                    (p) => p.couchId == cart[i].couchId && p.colorElement == cart[i].colorElement
+                    (p) => p.productId == cart[i].productId && p.colorElement == cart[i].colorElement
                 );
 
                 //Si le canapé sélectionné se trouve déjà dans le panier, alors sa quantité doit être incrémentée.
@@ -231,14 +231,14 @@ modifyFromCart();
 //Suppression des canapés du panier.
 function removeFromCart(){
 
-    //Il faut déclarer "deleteItem", pour les besoins des prochaines étapes.
-    let deleteItem = document.querySelectorAll(".deletionElement");
+    //Il faut déclarer "deletionElement", pour les besoins des prochaines étapes.
+    let deletionElement = document.querySelectorAll(".deleteItem");
 
     //Pour cette boucle "for", déclaration d'une variable d'indice "i", servant de compteur pour le nombre d'exécutions de la boucle.
-    for(let i = 0; i < deleteItem.length; i++){
+    for(let i = 0; i < deletionElement.length; i++){
 
         //Clic sur le bouton "Supprimer".
-        deleteItem[i].addEventListener("click", function(event){
+        deletionElement[i].addEventListener("click", function(event){
 
             //Désactivation du comportement par défaut du navigateur (modification de l'URL de l'onglet, et chargement d'une nouvelle page).
             event.preventDefault();
@@ -256,7 +256,7 @@ function removeFromCart(){
                     cart = cart.filter(
 
                         //Paramétrage de ladite recherche. Les produits non identiques sont conservés.
-                        (p) => p.couchId !== cart[i].couchId || p.colorElement !== cart[i].colorElement
+                        (p) => p.productId !== cart[i].productId || p.colorElement !== cart[i].colorElement
                     );
 
                     //Création du nouveau panier, et conversion du panier JS en chaîne de caractères JSON.

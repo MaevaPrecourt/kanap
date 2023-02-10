@@ -108,6 +108,7 @@ fetch(apiCouch)
 let productAltTxt;
 let productColor;
 let productDescription;
+let productId;
 let productImage;
 let productName;
 let productPrice;

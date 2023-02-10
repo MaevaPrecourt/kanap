@@ -140,7 +140,7 @@ function addToCart(couch){
         let cartFind = cart.find(
 
           //Paramétrage de ladite recherche.
-          (p) => p.couchId == couchId && p.productColor == productColor
+          (p) => p.productId == productId && p.productColor == productColor
         )
 
         //Si le canapé sélectionné se trouve déjà dans le panier, alors sa quantité doit être incrémentée.
@@ -169,7 +169,7 @@ function addToCart(couch){
             productAltTxt: couch.altTxt,
             productColor: productColor,
             productDescription: couch.description,
-            productId: couchId,
+            productId: productId,
             productImage: couch.imageUrl,
             productName: couch.name,
             productPrice: couch.price,
@@ -198,7 +198,7 @@ function addToCart(couch){
           productAltTxt: couch.altTxt,
           productColor: productColor,
           productDescription: couch.description,
-          productId: couchId,
+          productId: productId,
           productImage: couch.imageUrl,
           productName: couch.name,
           productPrice: couch.price,

@@ -117,6 +117,9 @@ function localStorageData(){
     //Le panier est vide.
     else{
         alert("Veuillez remplir votre panier.");
+
+        //Redirection vers la page "Accueil".
+        location.href = "index.html";
     }
 }
 
@@ -284,9 +287,245 @@ function removeFromCart(){
 //Appel de la fonction "removeFromCart()".
 removeFromCart();
 
+//Déclaration et initialisation du prénom de l'utilisateur.
+let firstName = document.getElementById("firstName");
+
 //Implémentation des regEx pour la validation des entrées utilisateur.
-let firstNameRegEx = /^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,50}$/;
-let lastNameRegEx = /^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,50}$/;
-let addressRegEx = /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ,.' -]{5,100}$/;
-let cityRegEx = /^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ,.' -]{2,50}$/;
-let emailRegEx = /^[a-zA-Z]+[a-z-A-Z.-_\d]+?@[a-zA-Z]+.[a-z]{2,50}$/;
+let firstNameRegEx = new RegExp(/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,50}$/);
+
+//Déclaration et initialisation du message d'erreur, relatif au prénom de l'utilisateur.
+let firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
+
+//Écoute de l'événement : "Changement de prénom".
+firstName.addEventListener("change", function(event){
+    
+    //Désactivation du comportement par défaut du navigateur (modification de l'URL de l'onglet, et chargement d'une nouvelle page).
+    event.preventDefault();
+    
+    //Appel de la fonction "firstNameCheck".
+    firstNameCheck();
+})
+
+//Vérification de validité du prénom.
+function firstNameCheck(){
+
+    //Si le prénom est conforme aux regEx, alors aucun message d'erreur ne s'affiche.
+    if(firstNameRegEx.test(firstName.value)){
+        firstNameErrorMsg.innerText = "";
+    
+    //Sinon, affichage d'un message d'erreur.
+    }else{
+        firstNameErrorMsg.innerText = "Veuillez renseigner un prénom valide.";
+    }
+}
+
+//Déclaration et initialisation du nom de l'utilisateur.
+let lastName = document.getElementById("lastName");
+
+//Implémentation des regEx pour la validation des entrées utilisateur.
+let lastNameRegEx = new RegExp(/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,50}$/);
+
+//Déclaration et initialisation du message d'erreur, relatif au nom de l'utilisateur.
+let lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
+
+//Écoute de l'événement : "Changement de nom".
+lastName.addEventListener("change", function(event){
+
+    //Désactivation du comportement par défaut du navigateur (modification de l'URL de l'onglet, et chargement d'une nouvelle page).
+    event.preventDefault();
+
+    //Appel de la fonction "lastNameCheck".
+    lastNameCheck();
+})
+
+//Vérification de validité du nom.
+function lastNameCheck(){
+
+    //Si le nom est conforme aux regEx, alors aucun message d'erreur ne s'affiche.
+    if(lastNameRegEx.test(lastName.value)){
+        lastNameErrorMsg.innerText = "";
+
+    //Sinon, affichage d'un message d'erreur.
+    }else{
+        lastNameErrorMsg.innerText = "Veuillez renseigner un nom valide.";
+    }
+}
+
+//Déclaration et initialisation de l'adresse de l'utilisateur.
+let address = document.getElementById("address");
+
+//Implémentation des regEx pour la validation des entrées utilisateur.
+let addressRegEx = new RegExp(/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ,.' -]{5,100}$/);
+
+//Déclaration et initialisation du message d'erreur, relatif à l'adresse de l'utilisateur.
+let addressErrorMsg = document.getElementById("addressErrorMsg");
+
+//Écoute de l'événement : "Changement d'adresse".
+address.addEventListener("change", function(event){
+
+    //Désactivation du comportement par défaut du navigateur (modification de l'URL de l'onglet, et chargement d'une nouvelle page).
+    event.preventDefault();
+
+    //Appel de la fonction "addressCheck".
+    addressCheck();
+})
+
+//Vérification de validité de l'adresse.
+function addressCheck(){
+
+    //Si l'adresse est conforme aux regEx, alors aucun message d'erreur ne s'affiche.
+    if(addressRegEx.test(address.value)){
+        addressErrorMsg.innerText = "";
+
+    //Sinon, affichage d'un message d'erreur.
+    }else{
+        addressErrorMsg.innerText = "Veuillez renseigner une adresse valide.";
+    }
+}
+
+//Déclaration et initialisation de la ville de l'utilisateur.
+let city = document.getElementById("city");
+
+//Implémentation des regEx pour la validation des entrées utilisateur.
+let cityRegEx = new RegExp(/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ,.' -]{2,50}$/);
+
+//Déclaration et initialisation du message d'erreur, relatif à la ville de l'utilisateur.
+let cityErrorMsg = document.getElementById("cityErrorMsg");
+
+//Écoute de l'événement : "Changement de ville".
+city.addEventListener("change", function(event){
+
+    //Désactivation du comportement par défaut du navigateur (modification de l'URL de l'onglet, et chargement d'une nouvelle page).
+    event.preventDefault();
+
+    //Appel de la fonction "cityCheck".
+    cityCheck();
+})
+
+//Vérification de validité de la ville.
+function cityCheck(){
+
+    //Si la ville est conforme aux regEx, alors aucun message d'erreur ne s'affiche.
+    if(cityRegEx.test(city.value)){
+        cityErrorMsg.innerText = "";
+
+    //Sinon, affichage d'un message d'erreur.
+    }else{
+        cityErrorMsg.innerText = "Veuillez renseigner une ville valide.";
+    }
+}
+
+//Déclaration et initialisation du courriel de l'utilisateur.
+let email = document.getElementById("email");
+
+//Implémentation des regEx pour la validation des entrées utilisateur.
+let emailRegEx = new RegExp(/^[a-zA-Z]+[a-z-A-Z.-_\d]+?@[a-zA-Z]+.[a-z]{2,50}$/);
+
+//Déclaration et initialisation du message d'erreur, relatif au courriel de l'utilisateur.
+let emailErrorMsg = document.getElementById("emailErrorMsg");
+
+//Écoute de l'événement : "Changement de courriel".
+email.addEventListener("change", function(event){
+
+    //Désactivation du comportement par défaut du navigateur (modification de l'URL de l'onglet, et chargement d'une nouvelle page).
+    event.preventDefault();
+
+    //Appel de la fonction "emailCheck".
+    emailCheck();
+})
+
+//Vérification de validité du courriel.
+function emailCheck(){
+
+    //Si le courriel est conforme aux regEx, alors aucun message d'erreur ne s'affiche.
+    if(emailRegEx.test(email.value)){
+        emailErrorMsg.innerText = "";
+
+    //Sinon, affichage d'un message d'erreur.
+    }else{
+        emailErrorMsg.innerText = "Veuillez renseigner un courriel valide.";
+    }
+}
+
+//Récupération du panier de l'utilisateur.
+let productArray = [];
+
+//Pour cette boucle "for", déclaration d'une variable d'indice "i", servant de compteur pour le nombre d'exécutions de la boucle.
+for(let i = 0; i < localStorage.getItem("cart").length; i++){
+
+    //On incrémente le panier de l'utilisateur à la fin de "productArray".
+    productArray.push(localStorage.getItem("cart")[i].productArray);
+}
+
+//Déclaration et initialisation des coordonnées de l'utilisateur.
+let contactObject = {
+    firstName: firstName,
+    lastName: lastName,
+    address: address,
+    city: city,
+    email: email
+}
+
+//orderElement = Product Order
+let orderElement = document.getElementById("order");
+
+//Clic sur le bouton "Commander !".
+orderElement.addEventListener("click", function(event){
+
+    //Désactivation du comportement par défaut du navigateur (modification de l'URL de l'onglet, et chargement d'une nouvelle page).
+    event.preventDefault();
+
+    //Création du panier et des coordonnées inclus dans la commande de l'utilisateur.
+    localStorage.setItem("orderElement", JSON.stringify(productArray, contactObject));
+
+    //Appel de la fonction "apiPost".
+    apiPost(); 
+})
+
+//Requête vers l'API, via la méthode "POST".
+function apiPost(){
+
+    //Caractéristiques de la requête JSON.
+    let jSON = {
+        method: "post",
+        accept: "application/json",
+        headers: {"content-type": "application/json"},
+        body: JSON.stringify(productArray, contactObject)
+    }
+
+    //Requête de l'API des produits commandés.
+    fetch("http://localhost:3000/api/products/order", jSON)
+    
+    //Récupération de la réponse.
+    .then(function(response){
+
+        //Connexion au serveur réussie.
+        if(response.ok){
+
+            //Conversion de la réponse émise au format JSON.
+            return response.json();
+        }
+    })
+
+    //Parcours du résultat.
+    .then(function(order){
+
+        //Appel de la fonction "orderSuccess".
+        orderSuccess();
+
+        //Commande réussie.
+        function orderSuccess(){
+
+            //Si la commande est bien transmise, alors ce message de confirmation s'affiche.
+            confirm("La commande a bien été transmise. Vous allez être redirigé(e) vers votre numéro de commande.")
+
+            //Redirection vers la page "Confirmation", et le numéro de commande de l'utilisateur.
+            location.href = `./confirmation.html?id=${order._id}`;
+        }
+    })
+
+    //Afficher sinon ce message d'erreur, en cas d'échec de l'opération.
+    .catch(function(orderFail){
+        alert("Échec de l'opération. Veuillez bien remplir votre panier et votre formulaire.");
+    })
+}

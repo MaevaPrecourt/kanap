@@ -388,6 +388,6 @@ order.addEventListener("click", function(event){
         }
     })
     .catch(function(postFail){
-        alert("Connexion au serveur échouée.");
+        alert("Échec de l'envoi du formulaire. Veuillez réessayer ultérieurement.");
     })}
 })

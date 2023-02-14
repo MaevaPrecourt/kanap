@@ -380,7 +380,6 @@ function emailCheck(){
     }
 }
 
-let cart = [];
 let products = [];
 if(localStorage.getItem("cart")){
     let cart = JSON.parse(localStorage.getItem("cart"));
@@ -419,29 +418,24 @@ function postSuccess(){
         contact: contact,
         products: products
     }
-    fetch("http://localhost:3000/api/products/order", {
-        method: "post",
-        headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        },
-        body: JSON.stringify(contactProducts)
+    fetch("http://localhost:3000/api/products/order",
+    {
+      method: "post",
+      headers: {
+        "accept": "application/json",
+        "content-type": "application/json"
+    },
+      body: JSON.stringify(contactProducts)
     })
     .then(function(response){
         if(response.ok){
-            return response.json();
-        }
-    })
+        return response.json();
+    }})
     .then(function(result){
-        console.log(result);
-        if (result.orderId) {
-            alert("Vous allez être redirigé vers votre numéro de commande.");
-            location.href = "./confirmation.html?id=" + result.orderId;
-        } else {
-            alert("Le numéro de commande est manquant. Veuillez réessayer ultérieurement.");
-        }
+        alert("Vous allez être redirigé vers votre numéro de commande.")
+        location.href = "./confirmation.html?id=" + result.orderId;
     })
-    /** .catch(function(postFail){
+    .catch(function(postFail){
         alert("Échec de l'envoi du formulaire. Veuillez réessayer ultérieurement.");
-    })*/
+    })
 }

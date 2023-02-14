@@ -230,7 +230,6 @@ function addToCart(couch){
   //Confirmation des ajouts au panier.
   function addToCartConfirm(){
     if(confirm("Produit(s) ajouté(s) au panier.")){
-      location.href = "cart.html";
     }
   }
 }

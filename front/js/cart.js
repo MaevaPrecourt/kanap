@@ -380,11 +380,13 @@ function emailCheck(){
     }
 }
 
+let order = document.getElementById("order");
+
 let products = [];
 if(localStorage.getItem("cart")){
     let cart = JSON.parse(localStorage.getItem("cart"));
-    for(let couch of cart){
-        products.push(couch.productId)
+    for(let product of cart){
+        products.push(product.productId)
     }
 }
 
@@ -396,14 +398,12 @@ let contact = {
     email: email.value
 }
 
-let order = document.getElementById("order");
-
 order.addEventListener("click", function(event){
     event.preventDefault();
 
     if((products.length == null) || (products.length == 0)){
         alert("Veuillez remplir votre panier.");
-        location.href = "index.html";
+        //location.href = "index.html";
     
     }else if((firstNameCheck() == false) || (lastNameCheck() == false) || (addressCheck() == false) || (cityCheck() == false) || (emailCheck() == false)){
         alert("Veuillez vérifier votre formulaire.");

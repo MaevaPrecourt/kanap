@@ -261,7 +261,7 @@ function removeFromCart(){
                     cart = cart.filter(
 
                         //Paramétrage de ladite recherche. Les produits non identiques sont conservés.
-                        (p) => p.productId !== cart[i].productId || p.colorElement !== cart[i].colorElement
+                        (p) => p.productId !== cart[i].productId || p.productColor !== cart[i].productColor
                     );
 
                     //Création du nouveau panier, et conversion du panier JS en chaîne de caractères JSON.

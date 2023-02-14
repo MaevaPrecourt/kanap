@@ -364,28 +364,28 @@ order.addEventListener("click", function(event){
   }else{
     postSuccess()
   }
-  let orderId = JSON.parse(localStorage.getItem("cart")).map(({id}) => id);
+  let orderId = "";
   function postSuccess(){
     let orderContent = {
         user: user,
-        cart: JSON.parse(localStorage.getItem("cart"))
+        cart: JSON.parse(localStorage.getItem("cart")).map(({id}) => id)
     }
     fetch("http://localhost:3000/api/products/order",
     {
       method: "post",
-      accept: "application/json",
-      headers: {"content-type": "application/json"},
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json"
+    },
       body: JSON.stringify(orderContent)
     })
     .then(function(response){
         return response.json();
     })
     .then(function(result){
-        orderId = result.orderId;
-        if(orderId !== ""){
+        let orderId = result.orderId;
             alert("Vous allez être redirigé vers votre numéro de commande.")
-            location.href = "confirmation.html?id=" + orderId;
-        }
+            location.href = "./confirmation.html?id=" + result.orderId;
     })
     .catch(function(postFail){
         alert("Échec de l'envoi du formulaire. Veuillez réessayer ultérieurement.");

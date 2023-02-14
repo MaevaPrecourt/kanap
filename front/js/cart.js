@@ -287,7 +287,7 @@ removeFromCart();
 let order = document.getElementById("order");
 order.addEventListener("click", function(event){
   event.preventDefault();
-  let user = {
+  let contact = {
     firstName: document.querySelector("#firstName").value,
     lastName: document.querySelector("#lastName").value,
     address: document.querySelector("#address").value,
@@ -295,7 +295,7 @@ order.addEventListener("click", function(event){
     email: document.querySelector("#email").value
   }
   function firstnameCheck(){
-    let firstName = user.firstName;
+    let firstName = contact.firstName;
     let firstNameRegEx = new RegExp(/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,50}$/);
     let firstNameInput = document.getElementById("firstName");
     let firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
@@ -308,7 +308,7 @@ order.addEventListener("click", function(event){
     }
   }
   function lastNameCheck(){
-    let lastName = user.lastName;
+    let lastName = contact.lastName;
     let lastNameRegEx = new RegExp(/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,50}$/);
     let lastNameInput = document.getElementById("lastName");
     let lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
@@ -321,7 +321,7 @@ order.addEventListener("click", function(event){
     }
   }
   function addressCheck(){
-    let address = user.address;
+    let address = contact.address;
     let addressRegEx = new RegExp(/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ,.' -]{5,100}$/);
     let addressInput = document.getElementById("address");
     let addressErrorMsg = document.getElementById("addressErrorMsg");
@@ -334,7 +334,7 @@ order.addEventListener("click", function(event){
     }
   }
   function cityCheck(){
-    let city = user.city;
+    let city = contact.city;
     let cityRegEx = new RegExp(/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ,.' -]{2,50}$/);
     let cityInput = document.getElementById("city");
     let cityErrorMsg = document.getElementById("cityErrorMsg");
@@ -347,7 +347,7 @@ order.addEventListener("click", function(event){
     }
   }
   function emailCheck(){
-    let email = user.email;
+    let email = contact.email;
     let emailRegEx = new RegExp(/^[a-zA-Z]+[a-z-A-Z.-_\d]+?@[a-zA-Z]+.[a-z]{2,50}$/);
     let emailInput = document.getElementById("email");
     let emailErrorMsg = document.getElementById("emailErrorMsg");
@@ -364,11 +364,11 @@ order.addEventListener("click", function(event){
   }else{
     postSuccess()
   }
-  let orderId = "";
+  let cart = [];
   function postSuccess(){
     let orderContent = {
-        user: user,
-        cart: JSON.parse(localStorage.getItem("cart")).map(({id}) => id)
+        contact: contact,
+        products: cart
     }
     fetch("http://localhost:3000/api/products/order",
     {
@@ -383,9 +383,8 @@ order.addEventListener("click", function(event){
         return response.json();
     })
     .then(function(result){
-        let orderId = result.orderId;
-            alert("Vous allez être redirigé vers votre numéro de commande.")
-            location.href = "./confirmation.html?id=" + result.orderId;
+        alert("Vous allez être redirigé vers votre numéro de commande.")
+        location.href = "./confirmation.html?id=" + result.orderId;
     })
     .catch(function(postFail){
         alert("Échec de l'envoi du formulaire. Veuillez réessayer ultérieurement.");

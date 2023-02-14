@@ -385,8 +385,8 @@ let order = document.getElementById("order");
 let products = [];
 if(localStorage.getItem("cart")){
     let cart = JSON.parse(localStorage.getItem("cart"));
-    for(let product of cart){
-        products.push(product.productId)
+    for(let couch of cart){
+        products.push(couch.productId)
     }
 }
 
@@ -403,7 +403,7 @@ order.addEventListener("click", function(event){
 
     if((products.length == null) || (products.length == 0)){
         alert("Veuillez remplir votre panier.");
-        //location.href = "index.html";
+        location.href = "index.html";
     
     }else if((firstNameCheck() == false) || (lastNameCheck() == false) || (addressCheck() == false) || (cityCheck() == false) || (emailCheck() == false)){
         alert("Veuillez vérifier votre formulaire.");

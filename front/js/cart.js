@@ -199,7 +199,7 @@ function modifyFromCart(){
                 let cartFind = cart.find(
 
                     //Paramétrage de ladite recherche.
-                    (p) => p.productId == cart[i].productId && p.colorElement == cart[i].colorElement
+                    (p) => p.productId == cart[i].productId && p.productColor == cart[i].productColor
                 );
 
                 //Si le canapé sélectionné se trouve déjà dans le panier, alors sa quantité doit être incrémentée.
@@ -400,7 +400,6 @@ let contact = {
 
 order.addEventListener("click", function(event){
     event.preventDefault();
-
 
     if((products.length == null) || (products.length == 0)){
         alert("Veuillez remplir votre panier.");

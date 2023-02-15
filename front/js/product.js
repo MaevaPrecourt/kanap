@@ -2,7 +2,7 @@
 const urlSearchParams = new URLSearchParams(location.search);
 
 //Obtention du canapé sélectionné.
-const productId = urlSearchParams.get("id");
+let productId = urlSearchParams.get("id");
 const apiCouch = `http://localhost:3000/api/products/${productId}`;
 const couch = "";
 

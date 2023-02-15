@@ -9,7 +9,6 @@ function localStorageData(){
 
         //Résultat de l'analyse du panier, au format JSON.
         let cart = JSON.parse(localStorage.getItem("cart"));
-        console.table(cart);
 
         //Si tableau, alors boucle "for ... of ...".*/
         for(let couch of cart){
@@ -22,7 +21,6 @@ function localStorageData(){
             let cardElement = document.createElement("article");
             cardElement.className = "cart__item";
             cardElement.dataset.id = couch.productId;
-            console.log(couch.productId);
             cardElement.dataset.color = couch.productColor;
 
             //"sectionElement" a "cardElement" pour enfant.
@@ -405,7 +403,7 @@ order.addEventListener("click", function(event){
 
     if((products.length == null) || (products.length == 0)){
         alert("Veuillez remplir votre panier.");
-        //location.href = "index.html";
+        location.href = "index.html";
     
     }else if((firstNameCheck() == false) || (lastNameCheck() == false) || (addressCheck() == false) || (cityCheck() == false) || (emailCheck() == false)){
         alert("Veuillez vérifier votre formulaire.");

@@ -2,8 +2,8 @@
 const urlSearchParams = new URLSearchParams(location.search);
 
 //Obtention du canapé sélectionné.
-const couchId = urlSearchParams.get("id");
-const apiCouch = `http://localhost:3000/api/products/${couchId}`;
+const productId = urlSearchParams.get("id");
+const apiCouch = `http://localhost:3000/api/products/${productId}`;
 const couch = "";
 
 //Requête de l'API produit.
@@ -109,7 +109,6 @@ fetch(apiCouch)
 let productAltTxt;
 let productColor;
 let productDescription;
-let productId;
 let productImage;
 let productName;
 let productPrice;

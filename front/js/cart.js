@@ -9,6 +9,7 @@ function localStorageData(){
 
         //Résultat de l'analyse du panier, au format JSON.
         let cart = JSON.parse(localStorage.getItem("cart"));
+        console.table(cart);
 
         //Si tableau, alors boucle "for ... of ...".*/
         for(let couch of cart){
@@ -21,6 +22,7 @@ function localStorageData(){
             let cardElement = document.createElement("article");
             cardElement.className = "cart__item";
             cardElement.dataset.id = couch.productId;
+            console.log(couch.productId);
             cardElement.dataset.color = couch.productColor;
 
             //"sectionElement" a "cardElement" pour enfant.
@@ -415,8 +417,14 @@ order.addEventListener("click", function(event){
 
 function postSuccess(){
     let contactProducts = {
-        contact: contact,
-        products: products
+        contact: {
+            firstName: firstName.value,
+            lastName: lastName.value,
+            address: address.value,
+            city: city.value,
+            email: email.value
+        },
+        products: [products]
     }
     fetch("http://localhost:3000/api/products/order",
     {

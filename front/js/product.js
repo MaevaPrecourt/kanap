@@ -149,8 +149,7 @@ function addToCart(couch){
           //Erreur : Valeur supérieure à 100 pour le nombre d'articles.
           if(cartFind.productQuantity > 100){
             alert("Veuillez ne pas renseigner de valeur supérieure à 100 pour le nombre d'articles.");
-          }
-          else{
+          }else{
 
             //Création du nouveau panier.
             localStorage.setItem("cart", JSON.stringify(cart));
@@ -222,7 +221,7 @@ function addToCart(couch){
     
     //Erreur : Absence d'option de couleur, et de quantité.
     else{
-      alert("Veuillez sélectionner une option de couleur, et renseigner un nombre d'articles entre 1 et 100.");
+      alert("Veuillez sélectionner une option de couleur, et renseigner un nombre d'articles entre 1 et 100. Les valeurs nulles ou négatives sont interdites.");
     }
   })
 

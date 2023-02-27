@@ -209,6 +209,10 @@ function modifyFromCart(){
                     if(itemQuantity[i].value > 100){
                         alert("Veuillez ne pas renseigner de valeur supérieure à 100 pour le nombre d'articles.");
 
+                    //Erreur : Valeur inférieure ou égale à 0 pour le nombre d'articles.
+                    }else if(itemQuantity[i].value <= 0){
+                        alert("Veuillez ne pas renseigner de valeur inférieure ou égale à 0 pour le nombre d'articles.");
+
                     //Succès : Modification de la quantité des canapés dans le panier.
                     }else{
 
@@ -289,7 +293,7 @@ removeFromCart();
 let firstName = document.getElementById("firstName");
 
 //Implémentation des regEx pour la validation des entrées utilisateur.
-let firstNameRegEx = new RegExp(/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,50}$/);
+let firstNameRegEx = new RegExp(/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,255}$/);
 
 //Déclaration et initialisation du message d'erreur, relatif au prénom de l'utilisateur.
 let firstNameErrorMsg = document.getElementById("firstNameErrorMsg");
@@ -323,7 +327,7 @@ function firstNameCheck(){
 let lastName = document.getElementById("lastName");
 
 //Implémentation des regEx pour la validation des entrées utilisateur.
-let lastNameRegEx = new RegExp(/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,50}$/);
+let lastNameRegEx = new RegExp(/^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ' -]{2,255}$/);
 
 //Déclaration et initialisation du message d'erreur, relatif au nom de l'utilisateur.
 let lastNameErrorMsg = document.getElementById("lastNameErrorMsg");
@@ -357,7 +361,7 @@ function lastNameCheck(){
 let address = document.getElementById("address");
 
 //Implémentation des regEx pour la validation des entrées utilisateur.
-let addressRegEx = new RegExp(/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ,.' -]{5,100}$/);
+let addressRegEx = new RegExp(/^[a-zA-Z0-9áàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ,.' -]{5,255}$/);
 
 //Déclaration et initialisation du message d'erreur, relatif à l'adresse de l'utilisateur.
 let addressErrorMsg = document.getElementById("addressErrorMsg");

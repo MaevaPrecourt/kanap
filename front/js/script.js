@@ -27,7 +27,7 @@ function getAllCouches(){
 
     /**Tableau d'objets (cf. "Product.js").
     *Si tableau, alors boucle "for ... of ...".*/
-    for (let couch of couches){
+    for(let couch of couches){
     
       //anchorElement = Product Link
       const anchorElement = document.createElement("a");
